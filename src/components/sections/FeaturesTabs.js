@@ -17,8 +17,9 @@ const defaultProps = {
 const allTabs = [
   {
     tabId: "tab-a",
-    title: "AMIS",
+    title: "AMIS kế toán",
     subTitle: "Phần mềm AMIS kế toán online",
+    iconSrc: require("./../../assets/images/amisLogo.png"),
     items: [
       {
         title: "Làm việc mọi lúc mọi nơi, trên mọi thiết bị",
@@ -42,8 +43,9 @@ const allTabs = [
   },
   {
     tabId: "tab-b",
-    title: "MeInvoice",
+    title: "Hoá đơn MeInvoice",
     subTitle: "Phần mềm Hoá đơn điện tử MISA MeInvoice",
+    iconSrc: require("./../../assets/images/meinvoiceIcon.png"),
     items: [
       {
         title:
@@ -64,6 +66,7 @@ const allTabs = [
     tabId: "tab-c",
     title: "MeInvoice Inbot",
     subTitle: "Dịch vụ xử lý Hoá đơn đầu vào MISA MeInvoice Inbot",
+    iconSrc: require("./../../assets/images/meinvoiceIcon.png"),
     items: [
       {
         title: "Giảm thiểu sai sót, thất lạc hóa đơn, rủi ro về thuế",
@@ -77,6 +80,7 @@ const allTabs = [
     tabId: "tab-d",
     title: "MISA Esign",
     subTitle: "Chữ ký số từ xa MISA Esign (Không cần USB)",
+    iconSrc: require("./../../assets/images/misaEsign.png"),
     items: [
       {
         title: "Phù hợp triển khai cho mọi đối tượng",
@@ -102,6 +106,7 @@ const allTabs = [
     tabId: "tab-e",
     title: "Ngân hàng điện tử",
     subTitle: "Ngân hàng điện tử",
+    iconSrc: require("./../../assets/images/eBank.png"),
     items: [
       {
         title: "Kết nối với các Ngân hàng phổ biến",
@@ -128,6 +133,7 @@ const allTabs = [
     tabId: "tab-f",
     title: "AMIS WESIGN",
     subTitle: "Tài liệu điện tử, hợp đồng điện tử AMIS WESIGN",
+    iconSrc: require("./../../assets/images/misaWesign.png"),
     items: [
       {
         title: "Tối ưu chi phí, thời gian và nguồn lực",
@@ -154,6 +160,7 @@ const allTabs = [
     tabId: "tab-g",
     title: "AMIS Thuế TNCN",
     subTitle: "Chứng từ khấu trừ thuế - AMIS Thuế TNCN",
+    iconSrc: require("./../../assets/images/misaTax.png"),
     items: [
       {
         title: "Điện tử hóa hoàn toàn thủ tục Thuế TNCN",
@@ -216,19 +223,26 @@ const FeaturesTabs = (props) => {
             GIẢI PHÁP QUẢN TRỊ TOÀN DIỆN CHO DOANH NGHIỆP
           </h3>
           <Tabs active={currentTab} onChange={setCurrentTab}>
-            <TabList>
+            <TabList style={{ marginTop: "10px" }}>
               {allTabs.map((tab) => {
                 return (
-                  <Tab tabId={tab.tabId} key={tab.tabId}>
+                  <Tab
+                    tabId={tab.tabId}
+                    key={tab.tabId}
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
                     <div className="features-tabs-tab-image mb-12">
                       <Image
-                        src={require("./../../assets/images/features-tabs-icon-01.svg")}
+                        src={tab.iconSrc}
                         alt="Tab icon 01"
                         width={56}
                         height={56}
                       />
                     </div>
-                    <div className="text-color-high fw-600 text-sm">
+                    <div
+                      className="text-color-high fw-600 text-sm"
+                      style={{ textAlign: "left", fontSize: "16px" }}
+                    >
                       {tab.title}
                     </div>
                   </Tab>
