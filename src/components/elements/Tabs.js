@@ -1,6 +1,7 @@
 import React, { createContext, useState, useContext } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import { isBrowser } from "react-device-detect";
 
 const propTypes = {
   active: PropTypes.string,
@@ -13,7 +14,9 @@ const defaultProps = {
 const TabsContext = createContext();
 
 const TabList = ({ className, ...props }) => {
-  const classes = classNames("tab-list list-reset mb-0", className);
+  const classes = isBrowser
+    ? classNames("tab-list list-reset mb-0", className)
+    : classNames("tab-list-mobile list-reset mb-0", className);
 
   return <ul {...props} className={classes} />;
 };

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 import { SectionTilesProps } from "../../utils/SectionProps";
+import { isBrowser } from "react-device-detect";
 
 const propTypes = {
   ...SectionTilesProps.types,
@@ -58,7 +59,13 @@ const Contact = (props) => {
         className={outerClasses}
         style={{ display: "flex", justifyContent: "center" }}
       >
-        <div className="container" style={{ margin: 0, padding: 0 }}>
+        <div
+          className="container"
+          style={{
+            margin: isBrowser ? 0 : undefined,
+            padding: isBrowser ? 0 : undefined,
+          }}
+        >
           <div className={innerClasses}>
             <div
               style={{
@@ -66,12 +73,14 @@ const Contact = (props) => {
                 flexDirection: "row",
               }}
             >
-              <img
-                src={require("./../../assets/images/profilePic.png")}
-                alt="profile"
-                width={300}
-                height={300}
-              />
+              {isBrowser ? (
+                <img
+                  src={require("./../../assets/images/profilePic.png")}
+                  alt="profile"
+                  width={300}
+                  height={300}
+                />
+              ) : null}
               <div>
                 <p
                   style={{
@@ -94,6 +103,7 @@ const Contact = (props) => {
                     flexWrap: "wrap",
                     gap: "20px",
                     paddingBottom: "20px",
+                    justifyContent: !isBrowser ? "center" : undefined,
                   }}
                 >
                   <img

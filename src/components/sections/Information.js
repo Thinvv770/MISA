@@ -1,6 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import { SectionSplitProps } from "../../utils/SectionProps";
+import { isBrowser } from "react-device-detect";
 
 const Information = (props) => {
   const zaloUrl = process.env.REACT_APP_ZALO_URL;
@@ -41,6 +42,7 @@ const Information = (props) => {
               color: "red",
               marginTop: "20px",
               marginBottom: "10px",
+              lineHeight: "normal",
             }}
           >
             Phần mềm kế toán online MISA AMIS
@@ -52,7 +54,7 @@ const Information = (props) => {
                   fontWeight: "bold",
                   color: "blue",
                   marginTop: "0px",
-                  marginBottom: "-40px",
+                  marginBottom: `${isBrowser ? "-40px" : "0px"}`,
                   opacity: "0.8",
                 }}
               >
@@ -66,24 +68,49 @@ const Information = (props) => {
                     <li>AI tạo email đa ngôn ngữ nhanh X10 lần</li>
                     <li>AI cung cấp báo cáo tức thời trên mobile</li>
                   </ul>
-                  <button
-                    type="button"
-                    className="button button-success button-wide-mobile button-lg mr-16"
-                    onClick={() => {
-                      window.open(zaloUrl, "_blank");
-                    }}
-                  >
-                    Nhận tư vấn
-                  </button>
-                  <button
-                    type="button"
-                    className="button button-error button-wide-mobile button-lg"
-                    onClick={() => {
-                      window.open(zaloUrl, "_blank");
-                    }}
-                  >
-                    Mua ngay
-                  </button>
+                  {isBrowser ? (
+                    <>
+                      <button
+                        type="button"
+                        className="button button-success button-wide-mobile button-lg mr-16"
+                        onClick={() => {
+                          window.open(zaloUrl, "_blank");
+                        }}
+                      >
+                        Nhận tư vấn
+                      </button>
+                      <button
+                        type="button"
+                        className="button button-error button-wide-mobile button-lg"
+                        onClick={() => {
+                          window.open(zaloUrl, "_blank");
+                        }}
+                      >
+                        Mua ngay
+                      </button>
+                    </>
+                  ) : (
+                    <div style={{ display: "flex", marginBottom: "20px" }}>
+                      <button
+                        type="button"
+                        className="button button-success button-wide-mobile button-lg mr-16"
+                        onClick={() => {
+                          window.open(zaloUrl, "_blank");
+                        }}
+                      >
+                        Nhận tư vấn
+                      </button>
+                      <button
+                        type="button"
+                        className="button button-error button-wide-mobile button-lg"
+                        onClick={() => {
+                          window.open(zaloUrl, "_blank");
+                        }}
+                      >
+                        Mua ngay
+                      </button>
+                    </div>
+                  )}
                 </div>
                 <img
                   src={require("./../../assets/images/banner.png")}
@@ -101,7 +128,12 @@ const Information = (props) => {
           }}
         >
           <h4
-            style={{ textAlign: "center", fontWeight: "bold", color: "blue" }}
+            style={{
+              textAlign: "center",
+              fontWeight: "bold",
+              color: "blue",
+              marginTop: !isBrowser ? 0 : undefined,
+            }}
           >
             An toàn, Bảo mật đạt chuẩn Quốc tế
           </h4>

@@ -21,6 +21,29 @@
     }
 }
 
+.tab-list-mobile {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    flex-grow: 1;
+    flex-shrink: 0;
+    margin-bottom: 0 !important;
+    white-space: nowrap;
+    overflow-x: auto;
+    user-select: none;
+
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: $tabs-item--line-width;
+        background-color: color-border(tabs-line);
+        z-index: -1;
+    }
+}
+
 .tab {
     display: flex;
     align-items: center;

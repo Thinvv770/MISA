@@ -55,8 +55,8 @@ const AccordionItem = ({
       </div>
       <div ref={contentRef} className="accordion-content text-xs">
         <div>{children}</div>
+        {imageSrc && <img src={imageSrc} alt="arrow" />}
       </div>
-      {imageSrc && <img src={imageSrc} alt="arrow" />}
     </li>
   );
 };

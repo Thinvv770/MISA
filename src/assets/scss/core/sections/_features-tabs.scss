@@ -22,6 +22,15 @@
         }        
     }
     
+    .tab-list-mobile {
+        margin-top: -$features-tabs-item--padding-v;
+        margin-bottom: $features-tabs-item--padding-v !important;        
+
+        &::after {
+            content: normal;
+        }        
+    }
+    
     .tab {
         flex-direction: column;
         opacity: 0.48;
